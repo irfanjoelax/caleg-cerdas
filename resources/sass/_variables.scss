@@ -1,0 +1,28 @@
+// Typography
+$font-family-sans-serif: 'Quicksand', sans-serif;
+
+// Color
+$primary: #34495e;
+$secondary: #82D9C8;
+$danger: #ef476f;
+$warning: #F1B025;
+$success: #118ab2;
+
+// Border
+$border-width: 1.5px;
+
+// Input Tag
+$input-placeholder-color: #adb5bd;
+$input-btn-focus-box-shadow: none;
+$form-select-focus-box-shadow: none;
+
+
+// Import Bootstrap variables for use within theme
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+// Import spacing variables
+@import "./variables/spacing.scss";
+
+// Import navigation variables
+@import "./variables/navigation.scss";
