@@ -34,6 +34,14 @@
                     </div>
 
                     <div class="row mb-lg-4 mb-md-3 mb-2">
+                        <label for="name" class="col-sm-2 col-form-label">Target Suara</label>
+                        <div class="col-sm-3">
+                            <input type="number" class="form-control" name="target_suara" placeholder="0"
+                                value="{{ $isEdit ? $data->target_suara : old('target_suara') }}" required>
+                        </div>
+                    </div>
+
+                    {{-- <div class="row mb-lg-4 mb-md-3 mb-2">
                         <label for="city_id" class="col-sm-2 col-form-label">Kota/Kabupaten</label>
                         <div class="col-sm-10">
                             <select name="city_id" class="form-select" required>
@@ -50,7 +58,7 @@
                             </select>
 
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="row mt-lg-4 mt-3">
                         <div class="col-12 text-lg-end text-md-end text-start">
@@ -62,13 +70,13 @@
                                 <i class="fa-solid fa-arrow-rotate-left"></i>
                                 <span class="ms-1">Back</span>
                             </a>
-                            @if ($isEdit)
+                            {{-- @if ($isEdit)
                                 <button type="button" class="btn btn-danger text-white" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal">
                                     <i class="fa-solid fa-xmark"></i>
                                     <span class="ms-1">Delete</span>
                                 </button>
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
                 </form>
@@ -76,8 +84,8 @@
         </div>
     </div>
 
-    @if ($isEdit)
+    {{-- @if ($isEdit)
         <x-modal-confirm id="deleteModal" text="Are you sure for delete this data ?"
             url="{{ route('district.destroy', ['district' => $data->id]) }}" method="DELETE" />
-    @endif
+    @endif --}}
 @endsection

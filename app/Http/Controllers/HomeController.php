@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Neighbourhood;
 use App\Models\Pendukung;
-use App\Models\User;
-use App\Models\VotingPlace;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
@@ -14,6 +10,8 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $totalPendukung = null;
+
         if (Auth::user()->role == 'provinsi') {
             $conditions = 'province_id = ' . Auth::user()->province_id;
             $view       = 'pages.home.provinsi';
@@ -35,8 +33,9 @@ class HomeController extends Controller
         }
 
         if (Auth::user()->role == 'relawan') {
-            $conditions = 'relawan_id = ' . Auth::user()->relawan_id;
+            $conditions = 'relawan_id = ' . Auth::user()->relawan->id;
             $view       = 'pages.home.relawan';
+            $totalPendukung = Pendukung::where('relawan_id', Auth::user()->relawan->id)->count();
         }
 
         $chart_options = [
@@ -58,6 +57,6 @@ class HomeController extends Controller
 
         $chart = new LaravelChart($chart_options);
 
-        return view($view, compact('chart'));
+        return view($view, compact('chart', 'totalPendukung'));
     }
 }

@@ -7,6 +7,7 @@ use App\Models\District;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Str;
 
 class DistrictController extends Controller
 {
@@ -42,5 +43,26 @@ class DistrictController extends Controller
             'request'  => $request->all(),
             'districts' => $districts->orderBy('name')->paginate(10)
         ]);
+    }
+
+    public function edit($id)
+    {
+        return view('pages.district.form', [
+            'isEdit' => true,
+            'url'    => route('district.update', ['district' => $id]),
+            'data'   => District::findOrFail($id)
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        District::findOrFail($id)->update([
+            'name' => Str::upper($request->name),
+            'target_suara' => $request->target_suara
+        ]);
+
+        Alert::success('Success', 'Your District (Kecamatan) has been updated');
+
+        return redirect()->route('district.index');
     }
 }

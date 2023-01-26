@@ -23,8 +23,13 @@
                     <thead class="table-primary">
                         <tr>
                             <th class="text-center" width="8%">#</th>
-                            <th class="text-start" width="92%">Nama</th>
-                            {{-- <th class="text-center" width="7%">Aksi</th> --}}
+                            <th class="text-start" width="70%">Nama</th>
+
+                            @if (Auth::user()->role == 'kota')
+                                <th class="text-end" width="15%">Target Suara</th>
+                            @endif
+
+                            <th class="text-center" width="7%">Aksi</th>
                         </tr>
                     </thead>
 
@@ -37,12 +42,19 @@
                                 <td class="text-start">
                                     {{ $item->name }}
                                 </td>
-                                {{-- <td class="text-center">
+
+                                @if (Auth::user()->role == 'kota')
+                                    <td class="text-end" width="15%">
+                                        {{ number_format($item->target_suara) }}
+                                        </th>
+                                @endif
+
+                                <td class="text-center">
                                     <a href="{{ route('district.edit', ['district' => $item->id]) }}"
                                         class="btn btn-sm btn-warning">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
-                                </td> --}}
+                                </td>
                             </tr>
                         @empty
                             <tr>

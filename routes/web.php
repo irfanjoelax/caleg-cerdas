@@ -25,10 +25,10 @@ Route::middleware(['auth'])->group(function () {
             ->only('index');
 
         Route::resource('/regency', App\Http\Controllers\RegencyController::class)
-            ->only('index');
+            ->only('index', 'show');
 
         Route::resource('/district', App\Http\Controllers\DistrictController::class)
-            ->only('index');
+            ->only('index', 'edit', 'update');
 
         Route::resource('/village', App\Http\Controllers\VillageController::class)
             ->only('index');

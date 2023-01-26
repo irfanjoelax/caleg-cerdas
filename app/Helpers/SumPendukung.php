@@ -7,6 +7,13 @@ function sum_pendukung($kelamin)
 {
     $user = Auth::user();
 
+    if ($user->role == 'relawan') {
+        $total_pendukung = Pendukung::where([
+            ['kelamin', '=', $kelamin],
+            ['relawan_id', '=', $user->relawan->id],
+        ])->count();
+    }
+
     if ($user->role == 'kelurahan') {
         $total_pendukung = Pendukung::where([
             ['kelamin', '=', $kelamin],

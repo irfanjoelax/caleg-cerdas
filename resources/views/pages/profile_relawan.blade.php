@@ -32,8 +32,8 @@
         </div>
 
         <div class="row mb-3 align-items-center">
-            <label for="email" class="col-sm-2 col-form-label">Kelamin</label>
-            <div class="col-sm-10">
+            <label for="email" class="col-sm-3 col-form-label">Kelamin</label>
+            <div class="col-sm-9">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="kelamin" id="pria" value="PRIA"
                         {{ Auth::user()->relawan->kelamin == 'PRIA' ? 'checked' : '' }}>
@@ -58,8 +58,8 @@
         </div>
 
         <div class="row mb-3">
-            <label for="photo" class="col-sm-2 col-form-label">Photo</label>
-            <div class="col-sm-10">
+            <label for="photo" class="col-sm-3 col-form-label">Photo</label>
+            <div class="col-sm-9">
                 <input type="file" class="form-control form-control-lg" name="photo">
             </div>
             <div class="mt-3 rounded-3">

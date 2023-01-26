@@ -35,26 +35,7 @@
 
     <div class="row">
         <div class="col-12 mb-3">
-            <div class="bg-white shadow p-4 rounded-4">
-                <small class="m-0">Pendukung Berdasarkan Jenis Kelamin</small>
-                <hr>
-                <div class="">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <p class="text-success m-0">Pria</p>
-                        <p class="text-danger m-0">Wanita</p>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <div class="bg-success py-1 rounded-0 text-white text-center"
-                            style="width: {{ $totalPendukungPRIA }}%">
-                            {{ $totalPendukungPRIA }}%
-                        </div>
-                        <div class="bg-danger py-1 rounded-0 text-white text-center"
-                            style="width: {{ $totalPendukungWANITA }}%">
-                            {{ $totalPendukungWANITA }}%
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <x-card-kelamin-pendukung />
         </div>
     </div>
 @endsection

@@ -25,7 +25,9 @@
                         <tr>
                             <th class="text-center" width="8%">#</th>
                             <th class="text-start" width="92%">Nama</th>
-                            {{-- <th class="text-center" width="7%">Aksi</th> --}}
+                            @if (Auth::user()->role == 'provinsi')
+                                <th class="text-center" width="7%">Aksi</th>
+                            @endif
                         </tr>
                     </thead>
 
@@ -36,12 +38,15 @@
                                     {{ ($regencies->currentPage() - 1) * $regencies->perPage() + $loop->iteration }}
                                 </td>
                                 <td class="text-start">{{ $item->name }}</td>
-                                {{-- <td class="text-center">
-                                    <a href="{{ route('regency.edit', ['regency' => $item->id]) }}"
-                                        class="btn btn-sm btn-warning">
-                                        <i class="fa-regular fa-pen-to-square"></i>
-                                    </a>
-                                </td> --}}
+
+                                @if (Auth::user()->role == 'provinsi')
+                                    <td class="text-center">
+                                        <a href="{{ route('regency.show', ['regency' => $item->id]) }}"
+                                            class="btn btn-sm btn-warning">
+                                            <i class="fa-regular fa-eye"></i>
+                                        </a>
+                                    </td>
+                                @endif
                             </tr>
                         @empty
                             <tr>
