@@ -24,6 +24,8 @@
 
     <!-- Custom Style -->
     @yield('style')
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 
 <body class="sb-nav-fixed bg-light">
@@ -142,6 +144,14 @@
                             <span class="ms-2">Pendukung</span>
                         </a>
 
+                        @if (in_array(Auth::user()->role, ['kota']))
+                        <a class="nav-link {{ Request::is('pengurusDPC*') ? 'bg-primary text-white' : '' }}"
+                            href="{{ route('pengurusDPC.index') }}">
+                            <i class="fa-solid fa-users-rays"></i>
+                            <span class="ms-2">Pengurus DPC Kota/Kab</span>
+                        </a>
+                        @endif
+
                         @if (in_array(Auth::user()->role, ['provinsi', 'kota', 'kecamatan']))
                             <x-nav-user-create />
                         @endif
@@ -180,7 +190,12 @@
         url="{{ route('logout') }}" />
 
     <!-- Scripts -->
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+    
     @include('sweetalert::alert')
     @yield('script')
 </body>

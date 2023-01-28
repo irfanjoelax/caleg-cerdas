@@ -11,6 +11,8 @@ class HomeController extends Controller
     public function index()
     {
         $totalPendukung = null;
+        $conditions = null;
+        $view = [];
 
         if (Auth::user()->role == 'provinsi') {
             $conditions = 'province_id = ' . Auth::user()->province_id;
@@ -36,6 +38,11 @@ class HomeController extends Controller
             $conditions = 'relawan_id = ' . Auth::user()->relawan->id;
             $view       = 'pages.home.relawan';
             $totalPendukung = Pendukung::where('relawan_id', Auth::user()->relawan->id)->count();
+        }
+
+        if (Auth::user()->role == 'admin') {
+            $conditions = 'province_id = ' . Auth::user()->province_id;
+            $view       = 'pages.home';
         }
 
         $chart_options = [

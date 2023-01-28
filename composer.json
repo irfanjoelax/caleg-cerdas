@@ -16,6 +16,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
+        "laravelcollective/html": "^6.3",
         "laraveldaily/laravel-charts": "^0.1.29",
         "realrashid/sweet-alert": "^5.1",
         "staudenmeir/eloquent-has-many-deep": "^1.7"

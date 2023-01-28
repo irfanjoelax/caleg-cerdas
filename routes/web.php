@@ -51,6 +51,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('/pendukung', App\Http\Controllers\PendukungController::class);
 
+    Route::resource('/pengurusDPC', App\Http\Controllers\PengurusDPCController::class);
+
     Route::resource('/user', App\Http\Controllers\UserController::class)
         ->except('show');
 });
