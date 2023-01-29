@@ -24,12 +24,12 @@
                     @csrf @if ($isEdit)
                         @method('PUT')
                     @endif
-                    <div class="row mb-lg-4 mb-md-3 mb-2">
+                    {{-- <div class="row mb-lg-4 mb-md-3 mb-2">
                         <label for="regency_id" class="col-sm-2 col-form-label">Kota/Kabupaten</label>
                         <div class="col-sm-10">
                             {!! Form::select('regency_id', $regency, isset($pengurusDPC['regency_id'])&&!is_null($pengurusDPC['regency_id']) ? $pengurusDPC['regency_id'] : null, ['class' => 'form-control regency_id', 'required', 'placeholder' => 'Pilih Kota/Kabupaten']) !!}
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row mb-lg-4 mb-md-3 mb-2">
                         <label for="pengurus" class="col-sm-2 col-form-label">Pengurus</label>
                         <div class="col-sm-10">

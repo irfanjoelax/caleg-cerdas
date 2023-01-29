@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PengurusDpcKotaKab;
 use App\Models\Regency;
 use Illuminate\Http\Request;
+use Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PengurusDPCController extends Controller
@@ -52,20 +53,12 @@ class PengurusDPCController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
-        $pengurus = PengurusDpcKotaKab::where('regency_id', $request['regency_id'])->first();
-        if($pengurus == null){
-            PengurusDpcKotaKab::create([
-                'regency_id'  => $request->regency_id,
-                'pengurus'   => $request->pengurus,
-            ]);
-            Alert::success('Created', 'Pengurus DPC Kab/Kota has been been created');
-            return redirect()->route('pengurusDPC.index');
-        } else {
-            Alert::warning('Warning', 'Pengurus DPC Kab/Kota Sudah Ada');
-            return redirect()->back();
-        }
-
+        PengurusDpcKotaKab::create([
+            'regency_id'  => Auth::user()->regency_id,
+            'pengurus'   => $request->pengurus,
+        ]);
+        Alert::success('Created', 'Pengurus DPC Kab/Kota has been been created');
+        return redirect()->route('pengurusDPC.index');
     }
 
     /**
@@ -108,7 +101,7 @@ class PengurusDPCController extends Controller
     {
         // return $request;
         $pengurusDPC = PengurusDpcKotaKab::findOrFail($id);
-        $pengurusDPC['regency_id'] = $request['regency_id'];
+        $pengurusDPC['regency_id'] = Auth::user()->regency_id;
         $pengurusDPC['pengurus'] = $request['pengurus'];
         $pengurusDPC->update();
 
