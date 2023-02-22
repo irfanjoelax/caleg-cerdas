@@ -54,6 +54,23 @@
         </div>
 
         <div class="row mb-lg-4 mb-md-3 mb-2">
+            <label for="neighbourhood_id" class="col-sm-2 col-form-label">Rukun Tetangga (RT)</label>
+            <div class="col-sm-10">
+                <select name="neighbourhood_id" class="form-select form-select-lg" required>
+                    @if (!$isEdit)
+                        <option value="" selected>Pilih RT</option>
+                    @endif
+                    @foreach ($neighbourhoods as $item)
+                        <option value="{{ $item->id }}"
+                            @if ($isEdit) {{ $item->id == $data->village_id ? 'selected' : '' }} @endif>
+                            {{ $item->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-lg-4 mb-md-3 mb-2">
             <label for="ktp" class="col-sm-2 col-form-label">FOTO KTP</label>
             <div class="col-sm-10">
                 <input type="file" class="form-control form-control-lg" name="ktp" {{ $isEdit ? '' : 'required' }}>
@@ -66,15 +83,15 @@
         </div>
 
         <button type="submit" class="btn btn-lg btn-primary w-100 mt-3">
-            <i class="fa-regular fa-circle-check"></i>
-            <span class="ms-1">{{ $isEdit ? 'Update' : 'Save' }}</span>
+            <i class="bi bi-save"></i>
+            <span class="ms-3">{{ $isEdit ? 'Update' : 'Save' }}</span>
         </button>
 
         @if ($isEdit)
             <button type="button" class="btn btn-lg btn-outline-danger w-100 mt-3" data-bs-toggle="modal"
                 data-bs-target="#deleteModal">
-                <i class="fa-solid fa-xmark"></i>
-                <span class="ms-1">Delete</span>
+                <i class="bi bi-x-lg"></i>
+                <span class="ms-3">Delete</span>
             </button>
         @endif
     </form>

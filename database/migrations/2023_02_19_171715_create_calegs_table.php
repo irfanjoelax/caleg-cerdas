@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePengurusPartaisTable extends Migration
+class CreateCalegsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreatePengurusPartaisTable extends Migration
      */
     public function up()
     {
-        Schema::create('pengurus_partais', function (Blueprint $table) {
+        Schema::create('calegs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('position', 150);
-            $table->unsignedInteger('order');
+            $table->unsignedTinyInteger('urutan');
             $table->char('province_id', 2)->nullable()->default(null);
             $table->char('regency_id', 4)->nullable()->default(null);
             $table->char('district_id', 7)->nullable()->default(null);
@@ -47,6 +46,6 @@ class CreatePengurusPartaisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pengurus_partais');
+        Schema::dropIfExists('calegs');
     }
 }

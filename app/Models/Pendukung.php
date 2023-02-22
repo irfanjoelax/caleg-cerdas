@@ -20,4 +20,9 @@ class Pendukung extends Model
     {
         return $this->belongsTo(Relawan::class);
     }
+
+    public function neighbourhood()
+    {
+        return $this->belongsTo(Neighbourhood::class);
+    }
 }

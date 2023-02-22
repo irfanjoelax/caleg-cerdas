@@ -28,7 +28,7 @@
     <form class="form-signin" action="{{ route('login') }}" method="POST">
         @csrf
         <div class="text-center mb-4">
-            <img class="mb-2" src="{{ asset(env('APP_LOGO')) }}" class="rounded-circle" width="90">
+            <img class="mb-2" src="{{ asset(env('APP_LOGO')) }}" class="" width="90">
             <h2 class="mb-3 fw-bold">
                 {{ env('APP_NAME') }}
             </h2>

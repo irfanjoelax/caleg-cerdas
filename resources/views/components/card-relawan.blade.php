@@ -6,6 +6,6 @@
         </h6>
     </div>
     <h1 class="m-0 display-4">
-        <i class="fa-solid fa-people-arrows"></i>
+        <i class="bi bi-person-badge"></i>
     </h1>
 </div>

@@ -22,10 +22,10 @@
                 <table class="table table-bordered align-middle">
                     <thead class="table-primary">
                         <tr>
-                            <th class="text-center" width="8%">#</th>
-                            <th class="text-start" width="50%">Nama</th>
+                            <th class="text-center" width="7%">#</th>
+                            <th class="text-start" width="85%">Nama</th>
                             {{-- <th class="text-start" width="42%">Kecamatan</th> --}}
-                            {{-- <th class="text-center" width="7%">Aksi</th> --}}
+                            <th class="text-center" width="8%">Aksi</th>
                         </tr>
                     </thead>
 
@@ -38,15 +38,12 @@
                                 <td class="text-start">
                                     {{ $item->name }}
                                 </td>
-                                {{-- <td class="text-start">
-                                    {{ $item->district->name }}
-                                </td> --}}
-                                {{-- <td class="text-center">
-                                    <a href="{{ route('village.edit', ['village' => $item->id]) }}"
-                                        class="btn btn-sm btn-warning">
-                                        <i class="fa-regular fa-pen-to-square"></i>
+                                <td class="text-center">
+                                    <a href="{{ route('village.show', ['village' => $item->id]) }}"
+                                        class="btn btn-sm btn-primary">
+                                        <i class="bi bi-eye"></i>
                                     </a>
-                                </td> --}}
+                                </td>
                             </tr>
                         @empty
                             <tr>

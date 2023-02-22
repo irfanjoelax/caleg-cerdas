@@ -1,6 +1,6 @@
-<a class="nav-link {{ Request::is('village*') ? 'bg-primary text-white' : '' }}" href="{{ route('village.index') }}">
-    <i class="bi bi-pin-map"></i>
-    <span class="ms-2">Kelurahan</span>
+<a class="nav-link {{ Request::is('district*') ? 'bg-primary text-white' : '' }}" href="{{ route('district.index') }}">
+    <i class="bi bi-map"></i>
+    <span class="ms-2">Kecamatan</span>
 </a>
 
 <a class="nav-link {{ Request::is('pengurus-partai*') ? 'bg-primary text-white' : '' }}"

@@ -20,6 +20,7 @@ class CreatePendukungsTable extends Migration
             $table->enum('kelamin', ['PRIA', 'WANITA']);
             $table->string('phone', 20);
             $table->string('ktp');
+            $table->foreignId('neighbourhood_id')->constrained()->cascadeOnUpdate()->restrictOnDelete();
             $table->foreignId('relawan_id')->constrained()->cascadeOnUpdate()->restrictOnDelete();
             $table->char('village_id', 10);
             $table->char('district_id', 7);

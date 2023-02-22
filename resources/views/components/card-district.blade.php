@@ -6,6 +6,6 @@
         </h6>
     </div>
     <h1 class="m-0 display-4">
-        <i class="fa-solid fa-building-wheat"></i>
+        <i class="bi bi-map"></i>
     </h1>
 </div>

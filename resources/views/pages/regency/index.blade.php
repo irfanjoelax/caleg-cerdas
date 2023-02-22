@@ -43,7 +43,7 @@
                                     <td class="text-center">
                                         <a href="{{ route('regency.show', ['regency' => $item->id]) }}"
                                             class="btn btn-sm btn-warning">
-                                            <i class="fa-regular fa-eye"></i>
+                                            <i class="bi bi-eye"></i>
                                         </a>
                                     </td>
                                 @endif

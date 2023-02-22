@@ -15,7 +15,7 @@
                     <x-form-search-table url="{{ route('user.index') }}" request="{{ $request['keyword'] ?? '' }}" />
 
                     <a href="{{ route('user.create') }}" class="btn btn-primary">
-                        <i class="fa-solid fa-plus"></i>
+                        <i class="bi bi-plus-lg"></i>
                     </a>
                 </div>
 
@@ -60,7 +60,7 @@
                                 <td class="text-center">
                                     <a href="{{ route('user.edit', ['user' => $item->id]) }}"
                                         class="btn btn-sm btn-warning">
-                                        <i class="fa-regular fa-pen-to-square"></i>
+                                        <i class="bi bi-pencil-square"></i>
                                     </a>
                                 </td>
                             </tr>

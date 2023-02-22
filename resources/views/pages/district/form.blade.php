@@ -29,7 +29,7 @@
                         <label for="name" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="name" placeholder="Enter Name Kecamatan"
-                                value="{{ $isEdit ? $data->name : old('name') }}" required>
+                                value="{{ $isEdit ? $data->name : old('name') }}" readonly>
                         </div>
                     </div>
 
@@ -61,13 +61,13 @@
                     </div> --}}
 
                     <div class="row mt-lg-4 mt-3">
-                        <div class="col-12 text-lg-end text-md-end text-start">
+                        <div class="col-12 d-flex gap-2 align-items-center justify-content-md-end justify-contenet-start">
                             <button type="submit" class="btn btn-primary">
-                                <i class="fa-regular fa-circle-check"></i>
+                                <i class="bi bi-save"></i>
                                 <span class="ms-1">{{ $isEdit ? 'Update' : 'Save' }}</span>
                             </button>
                             <a href="{{ route('district.index') }}" class="btn btn-warning">
-                                <i class="fa-solid fa-arrow-rotate-left"></i>
+                                <i class="bi bi-arrow-90deg-left"></i>
                                 <span class="ms-1">Back</span>
                             </a>
                             {{-- @if ($isEdit)

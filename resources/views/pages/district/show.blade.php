@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex flex-column gap-2">
-                    <h2 class="m-0 fw-bold">{{ Str::title($regency->name) }}</h2>
+                    <h2 class="m-0 fw-bold">{{ Str::title($district->name) }}</h2>
                     <h6 class="m-0 text-muted fw-semibold">Detail Data</h6>
                 </div>
             </div>
@@ -14,12 +14,6 @@
         <div class="row mt-4">
             <div class="col-md-6 col-12 mb-3">
                 <ul class="list-group rounded-4">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Kecamatan
-                        <span class="badge bg-primary rounded-pill">
-                            {{ number_format($totalDistrict) }}
-                        </span>
-                    </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Kelurahan
                         <span class="badge bg-primary rounded-pill">
@@ -58,12 +52,6 @@
                         Pendukung
                         <span class="badge bg-primary rounded-pill">
                             {{ number_format($totalPendukung) }}
-                        </span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Target Suara
-                        <span class="badge bg-primary rounded-pill">
-                            {{ number_format($totalTargetSuara) }}
                         </span>
                     </li>
                 </ul>

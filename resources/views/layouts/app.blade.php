@@ -19,22 +19,21 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet" />
-
     <!-- Custom Style -->
     @yield('style')
-
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 
 <body class="sb-nav-fixed bg-light">
     <nav class="sb-topnav navbar navbar-expand navbar-white bg-white">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3 text-primary fw-bold" href="#">{{ env('APP_NAME') }}</a>
+
         <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-                class="fas fa-bars"></i></button>
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 shadow-sm rounded-circle" id="sidebarToggle"
+            href="#!">
+            <i class="bi bi-grid"></i>
+        </button>
+
         <!-- Navbar Search-->
         <div class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
 
@@ -44,23 +43,24 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle {{ Request::is('profile') ? 'bg-primary text-white rounded-pill' : '' }}"
                     id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-user fa-fw"></i>
-                    <span class="ml-2 d-none d-md-inline-block">{{ Auth::user()->name }}</span>
+                    <i class="bi bi-person"></i>
+                    <span class="ms-2 d-none d-md-inline-block">{{ Auth::user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li>
                         <a class="dropdown-item" href="{{ route('profile.index') }}">
-                            <i class="fa-solid fa-gear"></i>
-                            <span class="ms-1">Profile</span>
+                            <i class="bi bi-gear"></i>
+                            <span class="ms-2">Profile</span>
                         </a>
                     </li>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                            <span class="ms-1">Log out</span>
+                        <a class="dropdown-item gap-2" href="#" data-bs-toggle="modal"
+                            data-bs-target="#logoutModal">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span class="ms-2">Log out</span>
                         </a>
                     </li>
                 </ul>
@@ -76,83 +76,28 @@
 
                         <a class="nav-link {{ Request::is('home') ? 'bg-primary text-white' : '' }}"
                             href="{{ url('/home') }}">
-                            <i class="fa-solid fa-house"></i>
+                            <i class="bi bi-house"></i>
                             <span class="ms-2">Home</span>
                         </a>
 
-                        <a class="nav-link {{ Request::is('area*') ? 'bg-primary text-white' : '' }} collapsed"
-                            href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
-                            aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa-solid fa-map-location-dot"></i>
-                            </div>
-                            Wilayah
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        @if (Auth::user()->role == 'provinsi')
+                            @include('layouts.nav-provinsi')
+                        @endif
 
-                            @if (in_array(Auth::user()->role, ['provinsi']))
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ route('regency.index') }}">
-                                        Kota/Kabupaten
-                                    </a>
-                                </nav>
-                            @endif
+                        @if (Auth::user()->role == 'kota')
+                            @include('layouts.nav-kota')
+                        @endif
 
-                            @if (in_array(Auth::user()->role, ['provinsi', 'kota']))
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ route('district.index') }}">
-                                        Kecamatan
-                                    </a>
-                                </nav>
-                            @endif
+                        @if (Auth::user()->role == 'kecamatan')
+                            @include('layouts.nav-kecamatan')
+                        @endif
 
-                            @if (in_array(Auth::user()->role, ['provinsi', 'kota', 'kecamatan']))
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ route('village.index') }}">
-                                        Kelurahan
-                                    </a>
-                                </nav>
-                            @endif
-
-                            @if (in_array(Auth::user()->role, ['provinsi', 'kota', 'kecamatan', 'kelurahan']))
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ route('neighbourhood.index') }}">
-                                        Rukun Tetangga
-                                    </a>
-                                </nav>
-                            @endif
-
-                        </div>
-
-                        <a class="nav-link {{ Request::is('voting-place*') ? 'bg-primary text-white' : '' }}"
-                            href="{{ route('voting-place.index') }}">
-                            <i class="fa-solid fa-person-booth"></i>
-                            <span class="ms-2">Daftar TPS</span>
-                        </a>
-
-                        <a class="nav-link {{ Request::is('relawan*') ? 'bg-primary text-white' : '' }}"
-                            href="{{ route('relawan.index') }}">
-                            <i class="fa-solid fa-people-arrows"></i>
-                            <span class="ms-2">Relawan</span>
-                        </a>
-
-                        <a class="nav-link {{ Request::is('pendukung*') ? 'bg-primary text-white' : '' }}"
-                            href="{{ route('pendukung.index') }}">
-                            <i class="fa-solid fa-users-rays"></i>
-                            <span class="ms-2">Pendukung</span>
-                        </a>
-
-                        @if (in_array(Auth::user()->role, ['kota']))
-                        <a class="nav-link {{ Request::is('pengurusDPC*') ? 'bg-primary text-white' : '' }}"
-                            href="{{ route('pengurusDPC.index') }}">
-                            <i class="fa-solid fa-users-rays"></i>
-                            <span class="ms-2">Pengurus DPC Kota/Kab</span>
-                        </a>
+                        @if (Auth::user()->role == 'kelurahan')
+                            @include('layouts.nav-kelurahan')
                         @endif
 
                         @if (in_array(Auth::user()->role, ['provinsi', 'kota', 'kecamatan']))
+                            <div class="sb-sidenav-menu-heading text-muted">Manajemen User</div>
                             <x-nav-user-create />
                         @endif
 
@@ -195,7 +140,7 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-    
+
     @include('sweetalert::alert')
     @yield('script')
 </body>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Neighbourhood;
 use App\Models\Pendukung;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -80,8 +81,9 @@ class PendukungController extends Controller
     public function create()
     {
         return view('pages.pendukung.form', [
-            'isEdit' => false,
-            'url'    => route('pendukung.store'),
+            'isEdit'         => false,
+            'url'            => route('pendukung.store'),
+            'neighbourhoods' => Neighbourhood::where('village_id', Auth::user()->village_id)->orderBy('name')->get()
         ]);
     }
 
@@ -90,16 +92,17 @@ class PendukungController extends Controller
         $ktp = $request->file('ktp')->store('pendukung/ktp');
 
         Pendukung::create([
-            'name'        => $request->name,
-            'usia'        => $request->usia,
-            'kelamin'     => $request->kelamin,
-            'phone'       => $request->phone,
-            'ktp'         => $ktp,
-            'relawan_id'  => Auth::user()->relawan->id,
-            'village_id'  => Auth::user()->village_id,
-            'district_id' => Auth::user()->district_id,
-            'regency_id'  => Auth::user()->regency_id,
-            'province_id' => Auth::user()->province_id,
+            'name'             => $request->name,
+            'usia'             => $request->usia,
+            'kelamin'          => $request->kelamin,
+            'phone'            => $request->phone,
+            'ktp'              => $ktp,
+            'neighbourhood_id' => $request->neighbourhood_id,
+            'relawan_id'       => Auth::user()->relawan->id,
+            'village_id'       => Auth::user()->village_id,
+            'district_id'      => Auth::user()->district_id,
+            'regency_id'       => Auth::user()->regency_id,
+            'province_id'      => Auth::user()->province_id,
         ]);
 
         Alert::success('Created', $this->textAlert . 'created');
@@ -118,6 +121,7 @@ class PendukungController extends Controller
             'isEdit' => true,
             'url'    => route('pendukung.update', ['pendukung' => $id]),
             'data'   => Pendukung::findOrFail($id),
+            'neighbourhoods' => Neighbourhood::where('village_id', Auth::user()->village_id)->orderBy('name')->get()
         ]);
     }
 
@@ -132,12 +136,13 @@ class PendukungController extends Controller
         }
 
         $pendukung->update([
-            'name'       => $request->name,
-            'usia'       => $request->usia,
-            'kelamin'    => $request->kelamin,
-            'phone'      => $request->phone,
-            'ktp'        => $ktp,
-            'relawan_id' => Auth::user()->relawan->id,
+            'name'             => $request->name,
+            'usia'             => $request->usia,
+            'kelamin'          => $request->kelamin,
+            'phone'            => $request->phone,
+            'ktp'              => $ktp,
+            'neighbourhood_id' => $request->neighbourhood_id,
+            'relawan_id'       => Auth::user()->relawan->id,
         ]);
 
         Alert::success('Updated', $this->textAlert . 'updated');

@@ -23,13 +23,13 @@
                     <thead class="table-primary">
                         <tr>
                             <th class="text-center" width="8%">#</th>
-                            <th class="text-start" width="70%">Nama</th>
+                            <th class="text-start" width="65%">Nama</th>
 
                             @if (Auth::user()->role == 'kota')
                                 <th class="text-end" width="15%">Target Suara</th>
                             @endif
 
-                            <th class="text-center" width="7%">Aksi</th>
+                            <th class="text-center" width="22%">Aksi</th>
                         </tr>
                     </thead>
 
@@ -49,10 +49,14 @@
                                         </th>
                                 @endif
 
-                                <td class="text-center">
+                                <td class="text-center d-flex gap-2 justify-content-center">
+                                    <a href="{{ route('district.show', ['district' => $item->id]) }}"
+                                        class="btn btn-sm btn-success">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
                                     <a href="{{ route('district.edit', ['district' => $item->id]) }}"
-                                        class="btn btn-sm btn-warning">
-                                        <i class="fa-regular fa-pen-to-square"></i>
+                                        class="btn btn-sm btn-primary">
+                                        <i class="bi bi-pencil-square"></i>
                                     </a>
                                 </td>
                             </tr>

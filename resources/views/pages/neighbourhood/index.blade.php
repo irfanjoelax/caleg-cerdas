@@ -16,7 +16,7 @@
 
                     @if (Auth::user()->role == 'kelurahan')
                         <a href="{{ route('neighbourhood.create') }}" class="btn btn-primary">
-                            <i class="fa-solid fa-plus"></i>
+                            <i class="bi bi-plus-lg"></i>
                         </a>
                     @endif
                 </div>
@@ -47,7 +47,7 @@
                                     <td class="text-center">
                                         <a href="{{ route('neighbourhood.edit', ['neighbourhood' => $item->id]) }}"
                                             class="btn btn-sm btn-warning">
-                                            <i class="fa-regular fa-pen-to-square"></i>
+                                            <i class="bi bi-pencil-square"></i>
                                         </a>
                                     </td>
                                 @endif

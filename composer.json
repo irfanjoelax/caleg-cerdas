@@ -19,6 +19,7 @@
         "laravelcollective/html": "^6.3",
         "laraveldaily/laravel-charts": "^0.1.29",
         "realrashid/sweet-alert": "^5.1",
+        "renatomarinho/laravel-page-speed": "^2.1",
         "staudenmeir/eloquent-has-many-deep": "^1.7"
     },
     "require-dev": {

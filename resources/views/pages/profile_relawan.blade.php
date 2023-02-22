@@ -69,14 +69,14 @@
         </div>
 
         <button type="submit" class="btn btn-lg btn-primary w-100">
-            <i class="fa-regular fa-circle-check"></i>
-            <span class="ms-1">Update</span>
+            <i class="bi bi-arrow-repeat"></i>
+            <span class="ms-2">Update</span>
         </button>
 
         <button type="button" class="btn btn-lg btn-outline-danger w-100 mt-3" data-bs-toggle="modal"
             data-bs-target="#logoutModal">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            <span class="ms-1">Keluar</span>
+            <i class="bi bi-box-arrow-right"></i>
+            <span class="ms-2">Keluar</span>
         </button>
     </form>
 

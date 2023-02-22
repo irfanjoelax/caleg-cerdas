@@ -7,6 +7,7 @@ use Illuminate\View\Component;
 class ModalConfirm extends Component
 {
     public $id, $text, $url, $method;
+
     /**
      * Create a new component instance.
      *

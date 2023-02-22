@@ -10,7 +10,7 @@
             <input type="search" class="form-control" name="keyword" value="{{ $request['keyword'] ?? '' }}"
                 placeholder="Nama Pendukung..">
             <button class="btn btn-outline-primary" type="submit">
-                <i class="fas fa-search"></i>
+                <i class="bi bi-search"></i>
                 Cari
             </button>
         </div>
@@ -49,11 +49,10 @@
                 <div class="d-flex align-items-center gap-2">
                     <a href="{{ route('pendukung.edit', ['pendukung' => $item->id]) }}"
                         class="badge bg-warning rounded-pill text-white">
-                        <i class="fa-solid fa-eye"></i>
+                        <i class="bi bi-eye"></i>
                     </a>
-                    <a href="{{ numberWA($item->phone) }}" target="_blank" class="badge rounded-pill text-white"
-                        style="background-color: #25d366">
-                        <i class="fa-solid fa-paper-plane"></i>
+                    <a href="{{ numberWA($item->phone) }}" target="_blank" class="badge bg-success rounded-pill text-white">
+                        <i class="bi bi-whatsapp"></i>
                     </a>
                 </div>
             </li>
@@ -68,6 +67,6 @@
 
     <a href="{{ route('pendukung.create') }}" class="btn btn-lg btn-primary rounded-4 shadow position-fixed"
         style="bottom: 100px; right: 15px">
-        <i class="fa-solid fa-plus"></i>
+        <i class="bi bi-plus-circle"></i>
     </a>
 @endsection

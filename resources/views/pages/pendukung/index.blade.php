@@ -34,11 +34,12 @@
                     <thead class="table-primary">
                         <tr>
                             <th class="text-center" width="8%">#</th>
-                            <th class="text-start" width="40%">Nama</th>
-                            <th class="text-center" width="15%">Kelamin</th>
+                            <th class="text-start" width="35%">Nama</th>
+                            <th class="text-center" width="10%">RT</th>
+                            <th class="text-center" width="12%">Kelamin</th>
                             <th class="text-center" width="7%">Usia (Tahun)</th>
                             <th class="text-center" width="10%">KTP</th>
-                            <th class="text-center" width="20%">Kontak</th>
+                            <th class="text-center" width="18%">Kontak</th>
                         </tr>
                     </thead>
 
@@ -47,7 +48,7 @@
                             function badge_kelamin($value)
                             {
                                 if ($value == 'PRIA') {
-                                    return 'success';
+                                    return 'info';
                                 }
                             
                                 if ($value == 'WANITA') {
@@ -69,6 +70,9 @@
                                     <h6 class="m-0">{{ $item->name }}</h6>
                                 </td>
                                 <td class="text-center">
+                                    <h6 class="m-0">{{ $item->neighbourhood->name }}</h6>
+                                </td>
+                                <td class="text-center">
                                     <span class="badge bg-{{ badge_kelamin($item->kelamin) }}">
                                         {{ $item->kelamin }}
                                     </span>
@@ -78,20 +82,20 @@
                                 </td>
                                 <td class="text-center">
                                     <a data-fancybox href="{{ asset('storage/' . $item->ktp) }}"
-                                        class="badge text-decoration-none text-bg-secondary">
+                                        class="badge text-decoration-none text-bg-dark">
                                         Lihat
                                     </a>
                                 </td>
                                 <td class="text-center">
                                     <a href="{{ numberWA($item->phone) }}" target="_blank"
-                                        class="badge text-decoration-none text-white" style="background-color: #25d366">
+                                        class="badge bg-success text-decoration-none text-white">
                                         {{ $item->phone }}
                                     </a>
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td class="text-danger text-center py-2" colspan="6">
+                                <td class="text-danger text-center py-2" colspan="7">
                                     Data Tidak Ditemukan atau Masih Kosong
                                 </td>
                             </tr>

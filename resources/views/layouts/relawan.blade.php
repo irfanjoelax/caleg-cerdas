@@ -19,9 +19,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet" />
-
     <!-- Custom Style -->
     @yield('style')
 </head>
@@ -37,7 +34,7 @@
                 @else
                     <a href="{{ url()->previous() !== url()->current() ? url()->previous() : route('home') }}"
                         class="btn btn-light">
-                        <i class="fa-solid fa-arrow-left-long"></i>
+                        <i class="bi bi-arrow-left"></i>
                     </a>
                 @endif
 
@@ -59,17 +56,17 @@
             <div class="d-flex align-item-center justify-content-around">
                 <a href="{{ route('home') }}"
                     class="text-decoration-none d-flex flex-column align-items-center {{ Request::is('home') ? 'text-primary fw-semibold' : 'text-muted' }}">
-                    <i class="fa-solid fa-house"></i>
+                    <i class="bi bi-house"></i>
                     <small>Home</small>
                 </a>
                 <a href="{{ route('pendukung.index') }}"
                     class="text-decoration-none d-flex flex-column align-items-center {{ Request::is('pendukung*') ? 'text-primary fw-semibold' : 'text-muted' }}">
-                    <i class="fa-solid fa-users-rays"></i>
+                    <i class="bi bi-people"></i>
                     <small>Pendukung</small>
                 </a>
                 <a href="{{ route('profile.index') }}"
                     class="text-decoration-none d-flex flex-column align-items-center {{ Request::is('profile') ? 'text-primary fw-semibold' : 'text-muted' }}">
-                    <i class="fa-regular fa-circle-user"></i>
+                    <i class="bi bi-gear"></i>
                     <small>Profile</small>
                 </a>
             </div>

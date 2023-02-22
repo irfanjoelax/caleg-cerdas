@@ -8,18 +8,18 @@
     <div class="row">
         <div class="col-12 mb-3">
             <div class="bg-primary rounded-4 p-4 text-white">
-                <div class="d-flex justify-content-between">
+                <div class="d-flex align-items-center justify-content-between">
                     <div class="">
                         <h6>Total Pendukung</h6>
                         <h1 class="display-5 m-0">{{ number_format($totalPendukung) }}</h1>
                     </div>
-                    <h1><i class="fa-solid fa-users-rays"></i></h1>
+                    <i class="bi bi-person-check" style="font-size: 3rem"></i>
                 </div>
                 <hr>
                 <a href="{{ route('pendukung.index') }}"
                     class="text-decoration-none text-white d-flex align-items-center justify-content-between">
                     <small>Lihat Selengkapnya</small>
-                    <i class="fa-solid fa-angle-right"></i>
+                    <i class="bi bi-chevron-right"></i>
                 </a>
             </div>
         </div>
